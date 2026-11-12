@@ -246,3 +246,12 @@ details p{color:var(--suave);margin:.6rem 0 0}
 
 [hidden]{display:none!important}
 .transparencia{font-size:.88rem!important;border-left:3px solid var(--oro);padding-left:.9rem;font-style:italic}
+
+/* Comunidad de WhatsApp siempre visible */
+.wa-fija{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:.7rem;background:#1f8f4e;color:#fff;text-decoration:none;padding:.7rem 1.1rem .7rem .8rem;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.28);font-family:var(--sans,inherit);line-height:1.15}
+.wa-fija svg{width:30px;height:30px;flex:none}
+.wa-fija b{display:block;font-size:1rem}.wa-fija small{display:block;font-size:.78rem;opacity:.9}
+.wa-fija:hover{background:#17773f}
+.menu .menu-wa{background:#1f8f4e;color:#fff !important;border-radius:999px;padding:.35rem .9rem}
+.pie .pie-wa{background:#1f8f4e;color:#fff !important;display:inline-block}
+@media (max-width:640px){.wa-fija{left:12px;right:12px;bottom:12px;justify-content:center;border-radius:14px}body.con-wa{padding-bottom:84px}}
