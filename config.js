@@ -7,8 +7,8 @@ window.PS_CONFIG = {
   CANAL_WHATSAPP: "",   // enlace del canal de WhatsApp cuando exista
   // Todos los canales donde aparece el Padre Samuel.
   CANALES: [
-    { nombre: "Oraciones del Padre Samuel", idioma: "Español", que: "Noticias del Papa y de la Iglesia, y una oración al final de cada vídeo", url: "https://www.youtube.com/@PadreSamueloraciones", foto: "fotos/canal_es1.jpg" },
-    { nombre: "A Catholic Coffee", idioma: "English", que: "Catholic news and Church teaching, explained honestly, in English", url: "https://www.youtube.com/channel/UC4rCsaEfIYP0Y5ZH5UGnWiw", foto: "fotos/canal_acc.jpg" }
+    { nombre: "Oraciones del Padre Samuel", idioma: "Español", que: "Noticias del Papa y de la Iglesia, y una oración al final de cada vídeo", url: "https://www.youtube.com/@PadreSamueloraciones", foto: "fotos/canal_es1.jpg" }
+    { nombre: "Junto al Papa", idioma: "Español", que: "El Vaticano por dentro: la vida, la casa y las personas cercanas al Papa León XIV", url: "https://www.youtube.com/@JuntoAlPapa", foto: "fotos/canal_junto.jpg" }
   ],
   // Posición del texto sobre el arte (fracciones del alto/ancho del arte 2:3). Se ajustan al llegar el arte final.
   NOMBRE_Y: 0.700, NOMBRE_ANCHO: 0.60,
