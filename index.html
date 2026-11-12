@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oraciones del Padre Samuel · Reza cada día, en familia</title>
+<meta name="description" content="La oración de cada día, el Evangelio de hoy, oraciones para cada momento y el escudo de tu familia gratis. Con el Padre Samuel.">
+<meta property="og:title" content="Oraciones del Padre Samuel"><meta property="og:description" content="Reza cada día, en familia. Gratis, sin anuncios."><meta property="og:image" content="fotos/retrato_patio_ancha.jpg">
+<meta name="theme-color" content="#3d0c16">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body data-raiz="" data-seccion="inicio">
+<div id="cabecera"></div>
+
+<section class="portada">
+  <div class="portada-txt">
+    <p class="antetitulo">Oraciones del Padre Samuel</p>
+    <h1>Reza cada día,<br><em>en familia</em>.</h1>
+    <p class="entrada">La oración de hoy, el Evangelio en una frase y oraciones para cada momento de la vida. Y un regalo para tu casa. Todo gratis, para siempre.</p>
+    <div class="botones">
+      <a class="boton" href="hoy/">Rezar la oración de hoy</a>
+      <a class="boton claro" href="escudo/">Crear el escudo de mi familia</a>
+    </div>
+  </div>
+  <figure class="portada-foto">
+    <img src="fotos/retrato_patio_ancha.jpg" alt="El Padre Samuel en el patio de la parroquia" width="1600" height="893">
+  </figure>
+</section>
+
+<section class="hoy-tira" id="hoyTira" hidden>
+  <p class="antetitulo">El Evangelio de hoy · <span id="hoyFecha"></span></p>
+  <p class="hoy-frase" id="hoyFrase"></p>
+  <a href="hoy/">Rezar con esta palabra →</a>
+</section>
+
+<section class="bloque-inicio">
+  <div class="bloque-cab"><p class="antetitulo">Oraciones</p><h2>¿Qué necesitas rezar hoy?</h2></div>
+  <div class="necesidades" id="necesidades"></div>
+  <p class="centro"><a href="oraciones/">Ver todas las oraciones →</a></p>
+</section>
+
+<section class="destacado-escudo">
+  <div class="de-arte"><img src="arte/guadalupe.jpg" alt="Escudo familiar con la Virgen de Guadalupe" width="1024" height="1536" loading="lazy"></div>
+  <div class="de-txt">
+    <p class="antetitulo">La casa bendecida</p>
+    <h2>Que tu casa tenga nombre y protector</h2>
+    <p>Elige al santo que cuida de tu familia, escribe tu apellido y descarga gratis el escudo para enmarcar, con la bendición de la casa y los nombres de los tuyos.</p>
+    <a class="boton" href="escudo/">Crear el escudo de mi familia</a>
+  </div>
+</section>
+
+<section class="adviento-banda">
+  <div>
+    <p class="antetitulo">Del 29 de noviembre al 24 de diciembre</p>
+    <h2>Adviento con el Padre Samuel</h2>
+    <p>Cada mañana de Adviento, una oración breve para preparar la Navidad en casa. Gratis.</p>
+  </div>
+  <a class="boton" href="adviento/">Apuntarme</a>
+</section>
+
+<section class="bloque-inicio">
+  <div class="bloque-cab"><p class="antetitulo">Dónde encontrarnos</p><h2>Los canales del Padre Samuel</h2></div>
+  <div class="canales" id="canales"></div>
+</section>
+
+<section class="sobre">
+  <div class="sobre-fotos">
+    <img src="fotos/capilla_virgen_retrato.jpg" alt="" loading="lazy" width="800" height="1000">
+    <img src="fotos/claustro_retrato.jpg" alt="" loading="lazy" width="800" height="1000">
+    <img src="fotos/comedor_retrato.jpg" alt="" loading="lazy" width="800" height="1000">
+  </div>
+  <div class="sobre-txt">
+    <p class="antetitulo">Quiénes somos</p>
+    <h2>Un rincón para rezar</h2>
+    <p>Oraciones del Padre Samuel nació en YouTube para acompañar a las familias católicas: las noticias del Papa y de la Iglesia contadas con calma, y siempre una oración al final.</p>
+    <p>Esta web es la casa de todos esos canales. Aquí no hay anuncios ni nada que pagar: solo oraciones para rezar, guardar y compartir con los tuyos.</p>
+    <p class="transparencia">El Padre Samuel es un personaje presentado con inteligencia artificial. Las noticias, citas y documentos de los que hablamos son reales y siempre citamos las fuentes; las oraciones siguen la fe de la Iglesia.</p>
+  </div>
+</section>
+
+<div id="pie"></div>
+<script src="config.js"></script>
+<script src="partes.js"></script>
+<script>
+(() => {
+  const C = window.PS_CONFIG;
+  document.getElementById("canales").innerHTML = (C.CANALES || []).map(c => `<a class="canal" href="${c.url}" rel="noopener"><img src="${c.foto}" alt="" loading="lazy"><div><small>${c.idioma}</small><b>${c.nombre}</b><span>${c.que}</span></div></a>`).join("");
+  fetch("oraciones.json").then(r => r.json()).then(d => {
+    document.getElementById("necesidades").innerHTML = d.map(x => `<a class="nec" href="oraciones/${x.slug}/"><span>${x.icono}</span><b>${x.titulo}</b><small>${x.necesidad}</small></a>`).join("");
+  });
+  fetch("hoy/hoy.json", { cache: "no-store" }).then(r => r.json()).then(h => {
+    if (!h.publicado) return;
+    document.getElementById("hoyFecha").textContent = h.fecha_texto; document.getElementById("hoyFrase").textContent = "«" + h.evangelio_frase + "»";
+    document.getElementById("hoyTira").hidden = false;
+  }).catch(() => {});
+})();
+</script>
+</body>
+</html>

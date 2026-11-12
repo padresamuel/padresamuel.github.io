@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La oración de hoy · Oraciones del Padre Samuel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilos.css">
+<style>
+.hoy{max-width:680px;margin:0 auto;padding:1.2rem 16px 2rem;text-align:center}
+.fecha{color:var(--suave);font-weight:700;margin:.4rem 0}
+.estampa{width:100%;max-width:420px;border-radius:16px;box-shadow:0 8px 30px rgba(92,20,29,.12);margin:1rem auto;display:block}
+.bloque{background:var(--blanco);border:1px solid var(--marfil2);border-radius:18px;padding:1.1rem 1.2rem;margin:1rem 0;text-align:left}
+.bloque h2{font-family:"Cormorant Garamond",serif;color:var(--granate2);margin:.1rem 0 .4rem;font-size:1.5rem}
+.cita{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-style:italic;line-height:1.35}
+.ref{color:var(--suave);font-size:.9rem}
+.oracion{font-family:"Cormorant Garamond",serif;font-size:1.35rem;line-height:1.45;white-space:pre-line}
+audio{width:100%;margin:.6rem 0}
+</style>
+</head>
+<body data-raiz="../" data-seccion="hoy">
+<div id="cabecera"></div>
+<main class="hoy">
+  <h1>La oración de hoy</h1>
+  <p class="fecha" id="fecha"></p>
+  <img id="estampa" class="estampa" alt="" hidden>
+  <section class="bloque"><h2>El Evangelio de hoy</h2><p class="cita" id="frase"></p><p class="ref" id="ref"></p></section>
+  <section class="bloque"><h2>Recemos</h2><audio id="audio" controls hidden></audio><p class="oracion" id="oracion"></p></section>
+  <section class="bloque"><h2>El santo de hoy</h2><p id="santo"></p></section>
+  <section class="bloque" style="text-align:center"><p>¿Ya tienes el escudo de tu familia? <a href="../escudo/">Hazlo gratis aquí →</a></p></section>
+</main>
+<div id="pie"></div>
+<script src="../config.js"></script><script src="../partes.js"></script>
+<script>
+fetch("hoy.json", { cache: "no-store" }).then(r => r.json()).then(d => {
+  const $ = id => document.getElementById(id);
+  $("fecha").textContent = d.fecha_texto; $("frase").textContent = "«" + d.evangelio_frase + "»"; $("ref").textContent = d.evangelio_cita;
+  $("oracion").textContent = d.oracion; $("santo").textContent = d.santo;
+  if (d.estampa) { $("estampa").src = d.estampa; $("estampa").hidden = false; }
+  if (d.audio) { $("audio").src = d.audio; $("audio").hidden = false; }
+}).catch(() => { document.getElementById("fecha").textContent = "La oración de hoy estará aquí muy pronto."; });
+</script>
+</body>
+</html>

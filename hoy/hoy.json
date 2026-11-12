@@ -1,0 +1,11 @@
+{
+  "fecha": "2026-11-12",
+  "publicado": false,
+  "fecha_texto": "EJEMPLO DE FORMATO — aún sin contenido real",
+  "evangelio_cita": "(cita del Evangelio del día, tomada de una fuente litúrgica oficial)",
+  "evangelio_frase": "Aquí irá una frase literal del Evangelio del día",
+  "oracion": "Aquí irá la oración breve del día,\nescrita a partir del Evangelio.\nAmén.",
+  "santo": "Aquí irá el santo del día con dos líneas sobre su vida.",
+  "estampa": "",
+  "audio": ""
+}

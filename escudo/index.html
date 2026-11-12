@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La casa bendecida · El escudo de tu familia · Oraciones del Padre Samuel</title>
+<meta name="description" content="Crea gratis el escudo de tu familia con tu apellido y el santo que protege tu casa, con la bendición del hogar y los nombres de los tuyos.">
+<meta property="og:title" content="Que tu casa tenga nombre y protector">
+<meta property="og:description" content="El escudo de tu familia con tu apellido y la bendición de la casa con los nombres de los tuyos. Gratis, sin anuncios.">
+<meta property="og:image" content="../arte/og.jpg">
+<meta name="theme-color" content="#3d0c16">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilos.css">
+</head>
+<body data-raiz="../" data-seccion="escudo">
+
+<div id="cabecera"></div>
+
+<section class="heroe">
+  <div class="heroe-txt">
+    <p class="antetitulo">La casa bendecida</p>
+    <h1>Que tu casa tenga <em>nombre</em> y <em>protector</em>.</h1>
+    <p class="entrada">Crea el escudo de tu familia con su apellido y el santo que los cuida. Y con la bendición del hogar escrita para ustedes, con los nombres de los tuyos, lista para rezarla juntos en la puerta de casa.</p>
+    <a class="boton" href="#taller">Crear el escudo de mi familia</a>
+    <ul class="confianza"><li>Gratis, siempre</li><li>Sin anuncios</li><li>Sin pagos ni letra pequeña</li></ul>
+  </div>
+  <figure class="heroe-obra">
+    <div class="marco"><canvas id="cvHeroe" width="1024" height="1536" aria-label="Ejemplo de escudo familiar"></canvas></div>
+    <figcaption>Ejemplo · Familia Hernández, bajo la protección de San Miguel</figcaption>
+  </figure>
+</section>
+
+<section id="taller" class="taller">
+  <div class="taller-cab">
+    <p class="antetitulo">El taller</p>
+    <h2>Cuatro pasos, dos minutos</h2>
+  </div>
+
+  <div class="taller-cuerpo">
+    <aside class="previa">
+      <div class="previa-sticky">
+        <div class="interruptor" role="tablist">
+          <button class="int activo" data-p="escudo" role="tab">El escudo</button>
+          <button class="int" data-p="bendicion" role="tab">La bendición</button>
+        </div>
+        <div class="marco pequeno"><canvas id="cvEscudo" width="1024" height="1536" aria-label="Vista previa del escudo"></canvas><canvas id="cvBend" width="1240" height="1754" hidden aria-label="Vista previa de la bendición"></canvas></div>
+        <p class="nota-previa">Se dibuja en tu propio celular, al momento.</p>
+      </div>
+    </aside>
+
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">I</span>
+        <div>
+          <h3><label for="apellido">El apellido de tu familia</label></h3>
+          <p class="ayuda">Tal como quieres que aparezca: «Hernández», «García López», «de la Cruz».</p>
+          <input id="apellido" class="campo grande" maxlength="28" autocomplete="family-name" placeholder="Escribe aquí el apellido">
+        </div>
+      </article>
+
+      <article class="paso">
+        <span class="num">II</span>
+        <div>
+          <h3>¿Qué necesita hoy tu familia?</h3>
+          <p class="ayuda">Elige al protector de tu casa.</p>
+          <div id="protectores" class="estampas"></div>
+        </div>
+      </article>
+
+      <article class="paso">
+        <span class="num">III</span>
+        <div>
+          <h3><label for="miembros">¿Por quién rezamos?</label> <span class="opcional">opcional</span></h3>
+          <p class="ayuda">Escribe los nombres de los tuyos, separados por comas. Irán dentro de la bendición de la casa. <strong>Estos nombres no salen de tu celular.</strong></p>
+          <textarea id="miembros" class="campo" rows="2" maxlength="220" placeholder="Rosa, Manuel, la abuela Carmen, el pequeño Mateo…"></textarea>
+        </div>
+      </article>
+
+      <article class="paso">
+        <span class="num">IV</span>
+        <form id="form" class="form" novalidate>
+          <h3 id="fTitulo">¿Dónde te lo enviamos?</h3>
+          <p class="ayuda" id="fAyuda">Te llega también por correo, en alta calidad, para que no lo pierdas.</p>
+          <div class="fila">
+            <div><label class="mini" for="nombre">Tu nombre</label><input id="nombre" class="campo" autocomplete="given-name" placeholder="Tu nombre"></div>
+            <div id="bCorreo"><label class="mini" for="correo">Tu correo</label><input id="correo" type="email" class="campo" autocomplete="email" placeholder="tucorreo@ejemplo.com"></div>
+          </div>
+          <label class="consent" id="bAcepto"><input id="acepto" type="checkbox"> <span>Quiero recibir mi escudo y, cada mañana, la oración del día. Me puedo dar de baja con un toque. <a href="../privacidad/">Cómo cuidamos tus datos</a></span></label>
+          <button class="boton ancho" type="submit">Bendecir mi casa</button>
+          <p id="aviso" class="aviso" role="alert"></p>
+        </form>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="final" class="final" hidden>
+  <p class="antetitulo">Hecho</p>
+  <h2>La casa de la <span id="fFamilia"></span> ya tiene escudo</h2>
+  <p class="entrada">Gracias, <span id="fNombre"></span>. Aquí tienes todo. Guárdalo y compártelo con los tuyos.</p>
+  <div class="descargas">
+    <button class="tarjeta-d" data-f="pdf"><span class="ico">🖼️</span><b>Para enmarcar</b><small>PDF A4 de alta calidad, con la bendición de la casa en la segunda hoja</small></button>
+    <button class="tarjeta-d" data-f="movil"><span class="ico">📱</span><b>Fondo del celular</b><small>Para llevar a tu protector siempre contigo</small></button>
+    <button class="tarjeta-d" data-f="whatsapp"><span class="ico">💬</span><b>Estado de WhatsApp</b><small>«Bendice, Señor, a la familia…», para compartir</small></button>
+    <button class="tarjeta-d" data-f="facebook"><span class="ico">🏠</span><b>Portada de Facebook</b><small>El escudo de la familia en tu perfil</small></button>
+  </div>
+</section>
+
+<section class="ritual">
+  <p class="antetitulo">Para el día que lo cuelguen</p>
+  <h2>Cómo bendecir tu casa en cinco minutos</h2>
+  <ol class="ritual-pasos">
+    <li><b>Reúnanse junto a la puerta.</b> Todos los que viven en la casa, también los niños. Si pueden, con una vela encendida.</li>
+    <li><b>Cuelguen el escudo.</b> En la entrada o en el lugar donde la familia se junta.</li>
+    <li><b>Hagan la señal de la cruz</b> y guarden un momento de silencio.</li>
+    <li><b>Lean la bendición de la casa.</b> Que la lea el mayor; los demás responden «Amén». Al nombrar a cada uno, que esa persona levante la mano.</li>
+    <li><b>Terminen con un Padrenuestro y un Avemaría,</b> y repítanla cada año en la misma fecha.</li>
+  </ol>
+  <p class="nota">Si tienen agua bendita, pueden rociar la entrada al final. Y si quieren, pidan a su párroco que venga a bendecir la casa: este escudo no sustituye esa bendición, la acompaña.</p>
+</section>
+
+<section class="hoy-cta">
+  <div>
+    <p class="antetitulo">Cada mañana</p>
+    <h2>La oración del día</h2>
+    <p>El Evangelio de hoy en una frase, una oración breve para empezar el día y el santo que celebra la Iglesia.</p>
+  </div>
+  <a class="boton claro" href="../hoy/">Rezar la de hoy</a>
+</section>
+
+<section class="preguntas">
+  <h2>Preguntas</h2>
+  <details><summary>¿Es gratis de verdad?</summary><p>Sí. El escudo, la bendición y la oración del día son gratis y lo seguirán siendo. No pedimos tarjeta ni hay nada que pagar después.</p></details>
+  <details id="faqCorreo"><summary>¿Qué hacen con mi correo?</summary><p>Lo usamos para enviarte tu escudo y, si lo aceptas, la oración de cada mañana. No lo vendemos ni lo compartimos. Puedes darte de baja con un toque en cualquier correo.</p></details>
+  <details><summary>¿Y los nombres de mi familia?</summary><p>No salen de tu celular: la bendición se escribe en tu propio dispositivo. No los guardamos en ningún sitio.</p></details>
+  <details><summary>¿Puedo hacer otro escudo, para mis padres o mis hijos?</summary><p>Claro. Haz tantos como quieras y regálaselos.</p></details>
+  <details><summary>¿Lo puedo imprimir en una tienda?</summary><p>Sí. El PDF está en tamaño A4 y en alta calidad: llévalo a cualquier imprenta o centro de copiado y queda muy bien en un marco sencillo.</p></details>
+</section>
+
+<div id="pie"></div>
+
+<script src="../config.js"></script>
+<script src="../partes.js"></script>
+<script src="../protectores.js"></script>
+<script src="../vendor/jspdf.umd.min.js"></script>
+<script src="../escudo.js"></script>
+</body>
+</html>
