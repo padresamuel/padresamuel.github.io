@@ -6,7 +6,9 @@ window.PS_CONFIG = {
   CANAL_YOUTUBE: "https://www.youtube.com/@PadreSamueloraciones",
   CANAL_WHATSAPP: "",   // enlace del canal de WhatsApp cuando exista
   // Todos los canales donde aparece el Padre Samuel.
+  WHATSAPP: "https://whatsapp.com/channel/0029Vb9DT8B7z4kWSmZ1iD2T",
   CANALES: [
+    { nombre: "Canal de WhatsApp", idioma: "WhatsApp", que: "Una oración corta cada mañana en tu celular, gratis y sin cadenas", url: "https://whatsapp.com/channel/0029Vb9DT8B7z4kWSmZ1iD2T", foto: "fotos/canal_whatsapp.jpg" },
     { nombre: "Oraciones del Padre Samuel", idioma: "Español", que: "Noticias del Papa y de la Iglesia, y una oración al final de cada vídeo", url: "https://www.youtube.com/@PadreSamueloraciones", foto: "fotos/canal_es1.jpg" },
     { nombre: "Junto al Papa", idioma: "Español", que: "El Vaticano por dentro: la vida, la casa y las personas cercanas al Papa León XIV", url: "https://www.youtube.com/@JuntoAlPapa", foto: "fotos/canal_junto.jpg" }
   ],
