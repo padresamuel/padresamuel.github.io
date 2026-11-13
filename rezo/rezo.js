@@ -19,14 +19,14 @@
   ];
   const PAISES = [["México", "52"], ["Colombia", "57"], ["Argentina", "54"], ["Perú", "51"], ["Venezuela", "58"], ["Chile", "56"], ["Ecuador", "593"], ["Guatemala", "502"], ["Cuba", "53"], ["Bolivia", "591"], ["República Dominicana", "1"], ["Honduras", "504"], ["Paraguay", "595"], ["El Salvador", "503"], ["Nicaragua", "505"], ["Costa Rica", "506"], ["Panamá", "507"], ["Uruguay", "598"], ["Puerto Rico", "1"], ["Estados Unidos", "1"], ["España", "34"], ["Otro país", ""]];
   const EJ = [{ n: "Rosa", nec: "salud" }, { n: "Manuel", nec: "trabajo" }, { n: "la abuela Carmen", nec: "mayor" }];
-  const st = { ap: "", personas: [{ n: "", nec: "salud" }], pag: 0, tu: "" };
+  const st = { personas: [{ n: "", nec: "salud" }, { n: "", nec: "proteccion" }, { n: "", nec: "paz" }], pag: 0, tu: "" };
 
   // ---------- texto ----------
   const limpia = t => (t || "").replace(/\s+/g, " ").trim();
   const PART = new Set(["de", "del", "la", "las", "los", "y", "e"]);
   const formatea = a => limpia(a.replace(/[^\p{L}\s'\-]/gu, "")).split(" ").filter(Boolean).map((w, i, ws) => { const l = w.toLocaleLowerCase("es"); return PART.has(l) && i < ws.length - 1 ? l : l.charAt(0).toLocaleUpperCase("es") + l.slice(1); }).join(" ");
   const gente = () => { const v = st.personas.filter(p => limpia(p.n)); return v.length ? v.map(p => ({ n: limpia(p.n), nec: p.nec })) : EJ; };
-  const familia = () => formatea(st.ap) || "Hernández";
+  const deQuien = () => limpia(st.tu) ? "Preparado con cariño por " + limpia(st.tu) : "";
   const nec = id => NEC.find(x => x.id === id) || NEC[0];
   // «a el abuelo» → «al abuelo», «de el» → «del»
   const nombra = (t, n) => t.split("{N}").join(n).replace(/\ba el /g, "al ").replace(/\bde el /g, "del ").replace(/\bA el /g, "Al ");
@@ -46,12 +46,11 @@
   function portada(ctx, W, H) {
     fondo(ctx, W, H); cruz(ctx, W / 2, H * .2, W * .05);
     ctx.fillStyle = VINO; ctx.font = `700 ${W * .1}px Cinzel`; ctx.fillText("Rezo por ti", W / 2, H * .38);
-    ctx.font = `italic 600 ${W * .045}px "Cormorant Garamond"`; ctx.fillStyle = SUAVE; ctx.fillText("El libro de oración de la familia", W / 2, H * .45);
-    const s = ajusta(ctx, familia(), '700 {s}px Cinzel', Math.round(W * .075), W * .75); ctx.font = `700 ${s}px Cinzel`; ctx.fillStyle = "#5c141d"; ctx.fillText(familia(), W / 2, H * .53);
-    ctx.font = `500 ${W * .032}px "Cormorant Garamond"`; ctx.fillStyle = TINTA;
+    ctx.font = `italic 600 ${W * .045}px "Cormorant Garamond"`; ctx.fillStyle = SUAVE; ctx.fillText("El libro de oración de mi familia", W / 2, H * .45);
+    ctx.font = `500 ${W * .038}px "Cormorant Garamond"`; ctx.fillStyle = TINTA;
     const ns = gente().map(p => p.n); const txt = "Por " + (ns.length === 1 ? ns[0] : ns.slice(0, -1).join(", ") + " y " + ns[ns.length - 1]);
-    lineas(ctx, txt, W * .7).slice(0, 5).forEach((l, i) => ctx.fillText(l, W / 2, H * .64 + i * W * .046));
-    if (st.tu) { ctx.font = `italic 500 ${W * .028}px "Cormorant Garamond"`; ctx.fillStyle = SUAVE; ctx.fillText("Preparado con cariño por " + limpia(st.tu), W / 2, H * .86); }
+    lineas(ctx, txt, W * .7).slice(0, 6).forEach((l, i) => ctx.fillText(l, W / 2, H * .56 + i * W * .055));
+    if (deQuien()) { ctx.font = `italic 500 ${W * .03}px "Cormorant Garamond"`; ctx.fillStyle = SUAVE; ctx.fillText(deQuien(), W / 2, H * .86); }
     pie(ctx, W, H);
   }
   function guia(ctx, W, H) {
@@ -79,7 +78,6 @@
   function cierre(ctx, W, H) {
     fondo(ctx, W, H); cruz(ctx, W / 2, H * .13, W * .04);
     ctx.fillStyle = VINO; ctx.font = `700 ${W * .048}px Cinzel`; ctx.fillText("Por toda la familia", W / 2, H * .24);
-    ctx.font = `italic 600 ${W * .034}px "Cormorant Garamond"`; ctx.fillStyle = SUAVE; ctx.fillText("familia " + familia(), W / 2, H * .285);
     const t = `Señor, tú conoces a cada uno de los que he nombrado en este libro. Los pongo a todos en tus manos: a los que están cerca y a los que están lejos, a los que te buscan y a los que todavía no. Une a esta familia con un lazo que no se rompa, que nos sepamos perdonar y que nadie se sienta solo. Y cuando yo no sepa qué pedir, reza tú por ellos. María, Madre nuestra, cúbrenos con tu manto. Amén.`;
     ctx.font = `500 ${W * .039}px "Cormorant Garamond"`; ctx.fillStyle = TINTA; let y = H * .36;
     lineas(ctx, t, W * .74).forEach(l => { ctx.fillText(l, W / 2, y); y += W * .057; });
@@ -128,37 +126,42 @@
   function pdf() {
     const { jsPDF } = window.jspdf, d = new jsPDF({ unit: "mm", format: "a4", compress: true });
     paginas().forEach(([, f], i) => { const c = document.createElement("canvas"); c.width = 1654; c.height = 2339; f(c.getContext("2d"), c.width, c.height); if (i) d.addPage(); d.addImage(c.toDataURL("image/jpeg", .88), "JPEG", 0, 0, 210, 297); });
-    d.setProperties({ title: "Rezo por ti - familia " + familia(), creator: "Oraciones del Padre Samuel" });
-    d.save(`Rezo por ti - familia ${familia()}.pdf`);
+    d.setProperties({ title: "Rezo por ti", creator: "Oraciones del Padre Samuel" });
+    d.save("Rezo por ti - mi libro de oración.pdf");
   }
-  async function envia(ev) {
+  function envia(ev) {
     ev.preventDefault(); const av = $("#aviso");
     const nombre = limpia($("#nombre").value), tel = $("#tel").value.replace(/[^\d]/g, ""), pais = $("#pais").value;
-    if (!st.personas.some(p => limpia(p.n))) { av.textContent = "Escribe al menos un nombre en el paso II."; document.querySelector("#personas input").focus(); return; }
+    if (!st.personas.some(p => limpia(p.n))) { av.textContent = "Escribe al menos un nombre en el paso 1."; document.querySelector("#personas input").focus(); return; }
     if (!nombre) { av.textContent = "Escribe tu nombre."; $("#nombre").focus(); return; }
     if (tel.length < 7) { av.textContent = "Revisa tu número de WhatsApp: parece que falta algo."; $("#tel").focus(); return; }
-    if (!$("#acepto").checked) { av.textContent = "Marca la primera casilla para recibir tu libro."; return; }
     av.textContent = ""; st.tu = nombre; pinta();
     const pre = (PAISES.find(x => x[0] === pais) || [, ""])[1];
-    const datos = new URLSearchParams({ nombre, whatsapp: (pre ? "+" + pre + " " : "") + tel, pais, regalo: "Rezo por ti", acepta: "si", avisos: $("#avisos").checked ? "si" : "no", web: $("#web").value });
-    // Solo viajan nombre, WhatsApp, país y consentimiento. Los nombres de la familia NO se envían.
-    const clave = "ps_enviado_" + tel; let ya = false; try { ya = !!sessionStorage.getItem(clave); } catch (e) {}
-    if (C.COMUNIDAD_ENDPOINT && !ya) { try { sessionStorage.setItem(clave, "1"); } catch (e) {} try { await fetch(C.COMUNIDAD_ENDPOINT, { method: "POST", mode: "no-cors", body: datos }); } catch (e) { /* nunca dejamos a nadie sin su libro */ } }
+    // Solo viajan nombre, WhatsApp y país. Los nombres de la familia NO se envían.
+    const datos = new URLSearchParams({ nombre, whatsapp: (pre ? "+" + pre + " " : "") + tel, pais, regalo: "Rezo por ti", acepta: "si", avisos: "si", web: $("#web").value });
+    const clave = "ps_enviado_" + tel; let ya = false; try { ya = !!sessionStorage.getItem(clave); sessionStorage.setItem(clave, "1"); } catch (e) {}
+    if (C.COMUNIDAD_ENDPOINT && !ya) { try { fetch(C.COMUNIDAD_ENDPOINT, { method: "POST", mode: "no-cors", body: datos, keepalive: true }); } catch (e) {} }
+    try { pdf(); } catch (e) {}
     $("#fNombre").textContent = nombre.split(" ")[0];
-    const ew = $("#estampasWA"); ew.innerHTML = "";
-    gente().forEach(p => { const b = document.createElement("button"); b.className = "boton claro"; b.textContent = "Estampa para " + p.n; b.onclick = () => estampa(p).toBlob(x => bajaBlob(x, `Hoy recé por ti - ${p.n}.jpg`), "image/jpeg", .92); ew.appendChild(b); });
-    if (C.WA_NEGOCIO) { const a = $("#bajaWA"); a.href = `https://wa.me/${C.WA_NEGOCIO}?text=${encodeURIComponent("Hola Padre Samuel, soy " + nombre + ". Quiero mi libro REZO POR TI 🙏")}`; a.hidden = false; }
-    const fc = $("#finCanal"); if (C.WHATSAPP) fc.href = C.WHATSAPP; else fc.hidden = true;
+    const fc = $("#finCanal"); fc.href = C.WHATSAPP || "../";
     const fin = $("#final"); fin.hidden = false; fin.scrollIntoView({ behavior: "smooth" });
+    // Directo a la comunidad (en iPhone abrir solo puede cortar la descarga: allí se queda el botón verde)
+    if (C.WHATSAPP && !/iPad|iPhone|iPod/.test(navigator.userAgent)) setTimeout(() => { location.href = C.WHATSAPP; }, 2500);
+  }
+  function paisPorDefecto() {
+    let tz = ""; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    const M = { Mexico: "México", Monterrey: "México", Cancun: "México", Merida: "México", Tijuana: "México", Chihuahua: "México", Hermosillo: "México", Mazatlan: "México", Bogota: "Colombia", Buenos_Aires: "Argentina", Argentina: "Argentina", Cordoba: "Argentina", Lima: "Perú", Caracas: "Venezuela", Santiago: "Chile", Guayaquil: "Ecuador", Guatemala: "Guatemala", Havana: "Cuba", La_Paz: "Bolivia", Santo_Domingo: "República Dominicana", Tegucigalpa: "Honduras", Asuncion: "Paraguay", El_Salvador: "El Salvador", Managua: "Nicaragua", Costa_Rica: "Costa Rica", Panama: "Panamá", Montevideo: "Uruguay", Puerto_Rico: "Puerto Rico", Madrid: "España", Canary: "España", New_York: "Estados Unidos", Chicago: "Estados Unidos", Los_Angeles: "Estados Unidos", Denver: "Estados Unidos", Phoenix: "Estados Unidos" };
+    for (const k in M) if (tz.includes(k)) return M[k];
+    return "México";
   }
   async function inicia() {
-    const sp = $("#pais"); sp.innerHTML = PAISES.map(([n, p]) => `<option value="${n}">${n}${p ? " (+" + p + ")" : ""}</option>`).join("");
-    sp.onchange = () => { const p = PAISES.find(x => x[0] === sp.value)[1]; $("#prefijo").textContent = p ? "+" + p : "+"; };
+    const sp = $("#pais"); sp.innerHTML = PAISES.map(([n, p]) => `<option value="${n}">${n}${p ? " +" + p : ""}</option>`).join("");
+    sp.value = paisPorDefecto();
     filas();
     $("#mas").onclick = () => { st.personas.push({ n: "", nec: "salud" }); filas(); const ins = document.querySelectorAll("#personas input"); ins[ins.length - 1].focus(); };
-    $("#apellido").oninput = e => { st.ap = e.target.value; st.pag = 0; pinta(); };
     $("#ant").onclick = () => { st.pag = Math.max(0, st.pag - 1); pinta(); };
     $("#sig").onclick = () => { st.pag = Math.min(paginas().length - 1, st.pag + 1); pinta(); };
+    $("#nombre").oninput = e => { st.tu = e.target.value; st.pag = 0; pinta(); };
     $("#form").addEventListener("submit", envia); $("#bajaPDF").onclick = pdf;
     await Promise.all(['700 40px Cinzel', '600 40px Cinzel', '500 40px "Cormorant Garamond"', 'italic 600 40px "Cormorant Garamond"', 'italic 500 40px "Cormorant Garamond"'].map(f => document.fonts.load(f)));
     const h = $("#cvHeroe"); persona(h.getContext("2d"), h.width, h.height, { n: "Rosa", nec: "salud" }, 1);

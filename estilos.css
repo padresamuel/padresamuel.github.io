@@ -274,3 +274,12 @@ details p{color:var(--suave);margin:.6rem 0 0}
 .final-com{margin-top:2.2rem}
 @media (max-width:640px){.persona{grid-template-columns:1fr auto}.persona select{grid-column:1/2}.persona .quita{grid-row:1/3;grid-column:2}.descargas.dos{grid-template-columns:1fr}}
 @media (max-width:640px){.previa .marco.pequeno{max-width:230px;margin:0 auto}.hojear{max-width:300px;margin:.7rem auto 0}}
+
+.boton.enorme{font-size:1.3rem;padding:1.25rem 2rem}
+.boton.verde{background:#25d366;color:#08331a;box-shadow:0 10px 24px -10px rgba(16,120,60,.8)}
+.tel .prefijo{width:auto;max-width:9.5rem;padding:.75rem .5rem;font-size:1rem}
+#nombre{margin:.4rem 0 .6rem}
+.letra-peq{font-size:.88rem;color:var(--suave);margin:.7rem 0 0;line-height:1.45}
+.final-mini{margin-top:1.6rem}.enlace{all:unset;cursor:pointer;color:var(--oro2);text-decoration:underline;font-size:.95rem}
+@media (max-width:640px){.tel{grid-template-columns:1fr}.tel .prefijo{max-width:none;width:100%}}
+body[data-seccion="rezo"] .wa-fija{display:none}body[data-seccion="rezo"].con-wa{padding-bottom:0}

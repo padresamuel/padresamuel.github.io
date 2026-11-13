@@ -34,7 +34,7 @@
 <section id="taller" class="taller">
   <div class="taller-cab">
     <p class="antetitulo">Tu libro</p>
-    <h2>Tres pasos y es tuyo</h2>
+    <h2>Dos pasos y es tuyo</h2>
   </div>
 
   <div class="taller-cuerpo">
@@ -42,63 +42,42 @@
       <div class="previa-sticky">
         <div class="marco pequeno"><canvas id="cvPag" width="1240" height="1754" aria-label="Vista previa de la página"></canvas></div>
         <div class="hojear"><button type="button" id="ant" aria-label="Página anterior">‹</button><span id="numPag">Portada</span><button type="button" id="sig" aria-label="Página siguiente">›</button></div>
-        <p class="nota-previa">Se escribe en tu propio celular, al momento.</p>
       </div>
     </aside>
 
-    <div class="pasos">
+    <form id="form" class="pasos" novalidate>
       <article class="paso">
-        <span class="num">I</span>
-        <div>
-          <h3><label for="apellido">El apellido de tu familia</label></h3>
-          <p class="ayuda">Irá en la portada: «El libro de oración de la familia…».</p>
-          <input id="apellido" class="campo grande" maxlength="28" autocomplete="family-name" placeholder="Hernández, García López…">
-        </div>
-      </article>
-
-      <article class="paso">
-        <span class="num">II</span>
+        <span class="num">1</span>
         <div>
           <h3>¿Por quién quieres rezar?</h3>
-          <p class="ayuda">Escribe el nombre de cada persona y elige lo que está viviendo. Cada una tendrá su propia página. <strong>Estos nombres no salen de tu celular.</strong></p>
+          <p class="ayuda">Escribe sus nombres. Cada uno tendrá su página con su oración. <strong>Estos nombres no salen de tu celular.</strong></p>
           <div id="personas" class="personas"></div>
-          <button type="button" id="mas" class="boton claro mas">+ Añadir otra persona</button>
+          <button type="button" id="mas" class="boton claro mas">+ Otra persona</button>
         </div>
       </article>
 
       <article class="paso">
-        <span class="num">III</span>
-        <form id="form" class="form" novalidate>
-          <h3>¿A quién se lo entregamos?</h3>
-          <p class="ayuda">Déjanos tu WhatsApp y te avisamos cuando haya libros nuevos y oraciones especiales. Sin cadenas ni mensajes cada día.</p>
-          <div class="fila">
-            <div><label class="mini" for="nombre">Tu nombre</label><input id="nombre" class="campo" autocomplete="given-name" maxlength="60" placeholder="Tu nombre"></div>
-            <div><label class="mini" for="pais">Tu país</label><select id="pais" class="campo"></select></div>
-          </div>
-          <label class="mini" for="tel">Tu WhatsApp</label>
-          <div class="tel"><span id="prefijo">+52</span><input id="tel" class="campo" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="18" placeholder="Tu número"></div>
+        <span class="num">2</span>
+        <div>
+          <h3>Tu nombre y tu WhatsApp</h3>
+          <input id="nombre" class="campo grande" autocomplete="given-name" maxlength="60" placeholder="Tu nombre" aria-label="Tu nombre">
+          <div class="tel"><select id="pais" class="campo prefijo" aria-label="Tu país"></select><input id="tel" class="campo grande" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="18" placeholder="Tu WhatsApp" aria-label="Tu número de WhatsApp"></div>
           <input id="web" name="web" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <label class="consent"><input id="acepto" type="checkbox"> <span>Quiero recibir mi libro y las oraciones del Padre Samuel por WhatsApp. Puedo darme de baja cuando quiera escribiendo «BAJA». <a href="../privacidad/">Cómo cuidamos tus datos</a></span></label>
-          <label class="consent"><input id="avisos" type="checkbox"> <span>También quiero enterarme de libros nuevos, novenas y novedades del Padre Samuel <span class="opcional">opcional</span></span></label>
-          <button class="boton ancho" type="submit">Recibir mi libro</button>
+          <button class="boton ancho enorme" type="submit">Recibir mi libro</button>
+          <p class="letra-peq">Al pulsar recibes tu libro y entras en la comunidad del Padre Samuel en WhatsApp, con oraciones y novedades. Sales cuando quieras escribiendo «BAJA». <a href="../privacidad/">Cómo cuidamos tus datos</a></p>
           <p id="aviso" class="aviso" role="alert"></p>
-        </form>
+        </div>
       </article>
-    </div>
+    </form>
   </div>
 </section>
 
 <section id="final" class="final" hidden>
   <p class="antetitulo">Listo</p>
-  <h2>Tu libro ya está hecho, <span id="fNombre"></span></h2>
-  <p class="entrada">Guárdalo en tu celular o imprímelo. Y si quieres, mándale a cada persona su estampa: «Hoy recé por ti».</p>
-  <div class="descargas dos">
-    <button class="tarjeta-d" id="bajaPDF"><span class="ico">📖</span><b>Descargar mi libro</b><small>PDF en letra grande, una página por persona, para rezar o imprimir</small></button>
-    <a class="tarjeta-d" id="bajaWA" hidden rel="noopener"><span class="ico">💬</span><b>Recibirlo también por WhatsApp</b><small>Escríbele al Padre Samuel y guárdalo en tu chat</small></a>
-  </div>
-  <h3 class="estampas-tit">Una estampa para cada uno</h3>
-  <div id="estampasWA" class="estampas-wa"></div>
-  <p class="final-com"><a class="boton" id="finCanal" rel="noopener">💬 Únete a la comunidad en WhatsApp</a></p>
+  <h2>Tu libro ya está en tu celular, <span id="fNombre"></span></h2>
+  <p class="entrada">Ahora pulsa el botón verde y luego <b>«Seguir»</b>: cada mañana te llegará una oración del Padre Samuel.</p>
+  <p><a class="boton verde enorme" id="finCanal" rel="noopener">💬 Entrar en la comunidad</a></p>
+  <p class="final-mini"><button type="button" id="bajaPDF" class="enlace">¿No se descargó el libro? Descárgalo otra vez</button></p>
 </section>
 
 <section class="ritual">
@@ -118,7 +97,7 @@
   <h2>Preguntas</h2>
   <details><summary>¿Es gratis de verdad?</summary><p>Sí. El libro es gratis y lo seguirá siendo. No pedimos tarjeta ni hay nada que pagar después.</p></details>
   <details><summary>¿Qué hacen con los nombres de mi familia?</summary><p>Nada, porque no nos llegan: el libro se escribe en tu propio celular. Los nombres y lo que vive cada persona no se envían ni se guardan en ningún sitio.</p></details>
-  <details><summary>¿Y con mi WhatsApp?</summary><p>Solo lo usamos para mandarte oraciones y, si marcaste la segunda casilla, avisos de libros y novenas. Nunca lo vendemos ni lo compartimos, y no te escribimos todos los días. Para darte de baja, escribe «BAJA» y te borramos.</p></details>
+  <details><summary>¿Y con mi WhatsApp?</summary><p>Solo lo usamos para mandarte oraciones y novedades del Padre Samuel, como libros nuevos y novenas. Nunca lo vendemos ni lo compartimos, y no te escribimos todos los días. Para darte de baja, escribe «BAJA» y te borramos.</p></details>
   <details><summary>¿Puedo hacer otro libro para otra familia?</summary><p>Claro. Haz tantos como quieras y regálaselos.</p></details>
   <details><summary>¿Lo puedo imprimir?</summary><p>Sí. Está en tamaño A4: llévalo a cualquier centro de copiado y queda muy bien encuadernado con un espiral sencillo.</p></details>
 </section>
