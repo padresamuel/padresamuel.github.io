@@ -12,4 +12,4 @@ Web estática y gratis (GitHub Pages). Todo se dibuja en el navegador: no hay se
 Probar en local: `python3 -m http.server 8765` en esta carpeta y abrir http://localhost:8765
 
 ## Pendiente
-- Sección «Junto al Papa · el Vaticano por dentro»: colección de llaves del Vaticano numeradas, con premio para quien la complete.
+- Sección «Junto al Papa»: /junto-al-papa/ y el regalo /junto-al-papa/calendario/ (Calendario de protección de la familia). Comunidad de WhatsApp compartida con el Padre Samuel.

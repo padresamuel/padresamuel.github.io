@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendario de protección de la familia · Junto al Papa</title>
+<meta name="description" content="Escribe las fechas de tu familia y recibe gratis tu calendario de protección: cada mes con su protector, las grandes fiestas de la Iglesia, las fechas del Papa León XIV y una oración para cada fecha de los tuyos.">
+<meta property="og:title" content="Calendario de protección de la familia">
+<meta property="og:description" content="Las fechas de los tuyos, bajo la protección de la Iglesia, mes a mes. Gratis.">
+<meta property="og:image" content="../../fotos/canal_junto.jpg">
+<meta name="theme-color" content="#3d0c16">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../estilos.css">
+</head>
+<body data-raiz="../../" data-seccion="junto">
+
+<div id="cabecera"></div>
+
+<section class="heroe">
+  <div class="heroe-txt">
+    <p class="antetitulo">El regalo de Junto al Papa</p>
+    <h1>Las fechas de los tuyos, <em>protegidas</em>.</h1>
+    <p class="entrada">Tu calendario de protección de la familia: cada mes con su protector, las grandes fiestas de la Iglesia, los días del Papa León XIV y, marcadas en su día, las fechas de tu familia con una oración para cada una.</p>
+    <a class="boton" href="#taller">Hacer el calendario de mi familia</a>
+    <ul class="confianza"><li>Gratis, siempre</li><li>Listo en dos minutos</li><li>Para imprimir y colgar</li></ul>
+  </div>
+  <figure class="heroe-obra">
+    <div class="marco"><canvas id="cvHeroe" width="1240" height="1754" aria-label="Ejemplo de mes del calendario"></canvas></div>
+    <figcaption>Ejemplo · un mes del calendario</figcaption>
+  </figure>
+</section>
+
+<section id="taller" class="taller">
+  <div class="taller-cab">
+    <p class="antetitulo">Tu calendario</p>
+    <h2>Dos pasos y es tuyo</h2>
+  </div>
+
+  <div class="taller-cuerpo">
+    <aside class="previa">
+      <div class="previa-sticky">
+        <div class="marco pequeno"><canvas id="cvPag" width="1240" height="1754" aria-label="Vista previa del calendario"></canvas></div>
+        <div class="hojear"><button type="button" id="ant" aria-label="Página anterior">‹</button><span id="numPag">Portada</span><button type="button" id="sig" aria-label="Página siguiente">›</button></div>
+      </div>
+    </aside>
+
+    <form id="form" class="pasos" novalidate>
+      <article class="paso">
+        <span class="num">1</span>
+        <div>
+          <h3>Las fechas de tu familia</h3>
+          <p class="ayuda">Cumpleaños, aniversarios, bautizos o el día de alguien que ya está en el cielo. Cada fecha saldrá marcada con su oración. <strong>Estos datos no salen de tu celular.</strong></p>
+          <div id="fechas" class="fechas"></div>
+          <button type="button" id="mas" class="boton claro mas">+ Otra fecha</button>
+        </div>
+      </article>
+
+      <article class="paso">
+        <span class="num">2</span>
+        <div>
+          <h3>Tu nombre y tu WhatsApp</h3>
+          <input id="nombre" class="campo grande" autocomplete="given-name" maxlength="60" placeholder="Tu nombre" aria-label="Tu nombre">
+          <div class="tel"><select id="pais" class="campo prefijo" aria-label="Tu país"></select><input id="tel" class="campo grande" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="18" placeholder="Tu WhatsApp" aria-label="Tu número de WhatsApp"></div>
+          <input id="web" name="web" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="boton ancho enorme" type="submit">Recibir mi calendario</button>
+          <p class="letra-peq">Al pulsar recibes tu calendario y entras en la comunidad del Padre Samuel y Junto al Papa en WhatsApp, con oraciones y novedades. Sales cuando quieras escribiendo «BAJA». <a href="../../privacidad/">Cómo cuidamos tus datos</a></p>
+          <p id="aviso" class="aviso" role="alert"></p>
+        </div>
+      </article>
+    </form>
+  </div>
+</section>
+
+<section id="final" class="final" hidden>
+  <p class="antetitulo">Listo</p>
+  <h2>Tu calendario ya está en tu celular, <span id="fNombre"></span></h2>
+  <p class="entrada">Ahora pulsa el botón verde y luego <b>«Seguir»</b>: cada mañana te llegará una oración, y te avisaremos de las fechas importantes.</p>
+  <p><a class="boton verde enorme" id="finCanal" rel="noopener">💬 Entrar en la comunidad</a></p>
+  <p class="final-mini"><button type="button" id="bajaPDF" class="enlace">¿No se descargó? Descárgalo otra vez</button></p>
+</section>
+
+<section class="ritual">
+  <p class="antetitulo">Cómo usar tu calendario</p>
+  <h2>Un mes, un protector</h2>
+  <ol class="ritual-pasos">
+    <li><b>Imprímelo y cuélgalo</b> en la cocina o junto a la puerta, donde lo vea toda la familia.</li>
+    <li><b>Al empezar cada mes,</b> lean juntos la oración de su protector.</li>
+    <li><b>En cada fecha de los tuyos,</b> rezen la oración que viene marcada para ese día.</li>
+    <li><b>En los días del Papa,</b> recen por él: lo necesita y lo agradece.</li>
+  </ol>
+  <p class="nota">Si una fecha cambia o se suma alguien a la familia, vuelve aquí y hazlo de nuevo: es gratis y tarda dos minutos.</p>
+</section>
+
+<section class="preguntas">
+  <h2>Preguntas</h2>
+  <details><summary>¿Es gratis de verdad?</summary><p>Sí. El calendario es gratis y lo seguirá siendo. No pedimos tarjeta ni hay nada que pagar después.</p></details>
+  <details><summary>¿Qué hacen con las fechas de mi familia?</summary><p>Nada, porque no nos llegan: el calendario se hace en tu propio celular. Los nombres y las fechas no se envían ni se guardan en ningún sitio.</p></details>
+  <details><summary>¿Y con mi WhatsApp?</summary><p>Solo lo usamos para mandarte oraciones y novedades, como libros nuevos y novenas. Nunca lo vendemos ni lo compartimos, y no te escribimos todos los días. Para darte de baja, escribe «BAJA» y te borramos.</p></details>
+  <details><summary>¿Lo puedo imprimir?</summary><p>Sí. Está en tamaño A4, una hoja por mes: llévalo a cualquier centro de copiado.</p></details>
+</section>
+
+<div id="pie"></div>
+
+<script src="../../config.js"></script>
+<script src="../../partes.js"></script>
+<script src="../../vendor/jspdf.umd.min.js"></script>
+<script src="calendario.js"></script>
+</body>
+</html>

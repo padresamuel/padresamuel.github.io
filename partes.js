@@ -3,7 +3,7 @@
   const R = document.body.dataset.raiz || "", S = document.body.dataset.seccion || "";
   const C = window.PS_CONFIG || {};
   const mono = `<svg viewBox="0 0 40 48" class="monograma" aria-hidden="true"><path d="M4 46V20a16 16 0 0 1 32 0v26" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 12v24M13 20h14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M1 46h38" stroke="currentColor" stroke-width="2.2"/></svg>`;
-  const nav = [["rezo", "rezo/", "🎁 Rezo por ti"], ["hoy", "hoy/", "La oración de hoy"], ["oraciones", "oraciones/", "Oraciones"], ["escudo", "escudo/", "El escudo de tu familia"], ["adviento", "adviento/", "Adviento"]];
+  const nav = [["rezo", "rezo/", "🎁 Rezo por ti"], ["hoy", "hoy/", "La oración de hoy"], ["oraciones", "oraciones/", "Oraciones"], ["escudo", "escudo/", "El escudo de tu familia"], ["adviento", "adviento/", "Adviento"], ["junto", "junto-al-papa/", "Junto al Papa"]];
   const cab = document.getElementById("cabecera");
   if (cab) cab.outerHTML = `<header class="cab">
     <a class="logo" href="${R}" aria-label="Inicio · Oraciones del Padre Samuel">${mono}<span><b>Oraciones</b> del Padre Samuel</span></a>
