@@ -142,7 +142,8 @@
     const pre = (PAISES.find(x => x[0] === pais) || [, ""])[1];
     const datos = new URLSearchParams({ nombre, whatsapp: (pre ? "+" + pre + " " : "") + tel, pais, regalo: "Rezo por ti", acepta: "si", avisos: $("#avisos").checked ? "si" : "no", web: $("#web").value });
     // Solo viajan nombre, WhatsApp, país y consentimiento. Los nombres de la familia NO se envían.
-    if (C.COMUNIDAD_ENDPOINT) { try { await fetch(C.COMUNIDAD_ENDPOINT, { method: "POST", mode: "no-cors", body: datos }); } catch (e) { /* nunca dejamos a nadie sin su libro */ } }
+    const clave = "ps_enviado_" + tel; let ya = false; try { ya = !!sessionStorage.getItem(clave); } catch (e) {}
+    if (C.COMUNIDAD_ENDPOINT && !ya) { try { sessionStorage.setItem(clave, "1"); } catch (e) {} try { await fetch(C.COMUNIDAD_ENDPOINT, { method: "POST", mode: "no-cors", body: datos }); } catch (e) { /* nunca dejamos a nadie sin su libro */ } }
     $("#fNombre").textContent = nombre.split(" ")[0];
     const ew = $("#estampasWA"); ew.innerHTML = "";
     gente().forEach(p => { const b = document.createElement("button"); b.className = "boton claro"; b.textContent = "Estampa para " + p.n; b.onclick = () => estampa(p).toBlob(x => bajaBlob(x, `Hoy recé por ti - ${p.n}.jpg`), "image/jpeg", .92); ew.appendChild(b); });
