@@ -140,7 +140,7 @@
     if (!$("#acepto").checked) { av.textContent = "Marca la primera casilla para recibir tu libro."; return; }
     av.textContent = ""; st.tu = nombre; pinta();
     const pre = (PAISES.find(x => x[0] === pais) || [, ""])[1];
-    const datos = new URLSearchParams({ nombre, whatsapp: (pre ? "+" + pre + " " : "") + tel, pais, canal: new URLSearchParams(location.search).get("c") || "ES1", regalo: "Rezo por ti", acepta: "si", avisos: $("#avisos").checked ? "si" : "no", origen: (new URLSearchParams(location.search).get("v") || document.referrer || "directo").slice(0, 80), web: $("#web").value });
+    const datos = new URLSearchParams({ nombre, whatsapp: (pre ? "+" + pre + " " : "") + tel, pais, regalo: "Rezo por ti", acepta: "si", avisos: $("#avisos").checked ? "si" : "no", web: $("#web").value });
     // Solo viajan nombre, WhatsApp, país y consentimiento. Los nombres de la familia NO se envían.
     if (C.COMUNIDAD_ENDPOINT) { try { await fetch(C.COMUNIDAD_ENDPOINT, { method: "POST", mode: "no-cors", body: datos }); } catch (e) { /* nunca dejamos a nadie sin su libro */ } }
     $("#fNombre").textContent = nombre.split(" ")[0];
