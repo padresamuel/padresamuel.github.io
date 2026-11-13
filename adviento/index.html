@@ -1,50 +1,102 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Adviento con el Padre Samuel · Una oración cada mañana hasta Navidad</title>
-<meta name="description" content="Del 29 de noviembre al 24 de diciembre, cada mañana una oración breve para preparar la Navidad en casa. Gratis.">
-<meta property="og:title" content="Adviento con el Padre Samuel"><meta property="og:image" content="../fotos/capilla_virgen_ancha.jpg">
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La corona de Adviento de tu familia · Oraciones del Padre Samuel</title>
+<meta name="description" content="Escribe los nombres de tu familia y recibe gratis tu Adviento en casa: cómo hacer la corona y una oración para cada domingo con los nombres de los tuyos.">
+<meta property="og:title" content="La corona de Adviento de tu familia">
+<meta property="og:description" content="Cuatro domingos, cuatro velas y los nombres de los tuyos en cada oración. Gratis, hasta Navidad.">
+<meta property="og:image" content="../fotos/capilla_virgen_ancha.jpg">
 <meta name="theme-color" content="#3d0c16">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../estilos.css"></head>
+<link rel="stylesheet" href="../estilos.css">
+</head>
 <body data-raiz="../" data-seccion="adviento">
+
 <div id="cabecera"></div>
-<section class="adv-heroe">
-  <div class="adv-txt">
-    <p class="antetitulo">29 de noviembre — 24 de diciembre</p>
-    <h1>Adviento con el <em>Padre Samuel</em></h1>
-    <p class="entrada">Veintiséis mañanas para preparar la Navidad en casa. Cada día, en tu correo, una oración breve, la palabra del Evangelio y un pequeño gesto para hacer en familia.</p>
-    <form id="advForm" class="adv-form" novalidate>
-      <input id="advNombre" class="campo" placeholder="Tu nombre" autocomplete="given-name">
-      <input id="advCorreo" class="campo" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="email">
-      <label class="consent"><input id="advAcepto" type="checkbox"> <span>Quiero recibir el Adviento y la oración del día. Me puedo dar de baja con un toque. <a href="../privacidad/">Privacidad</a></span></label>
-      <button class="boton ancho" type="submit">Apuntarme gratis</button>
-      <p id="advAviso" class="aviso" role="alert"></p>
+
+<section class="heroe">
+  <div class="heroe-txt">
+    <p class="antetitulo">Regalo de Adviento · del 29 de noviembre a Navidad</p>
+    <h1>La corona de Adviento <em>de tu familia</em>.</h1>
+    <p class="entrada">Cuatro domingos, cuatro velas y los nombres de los tuyos dentro de cada oración. Cómo hacer la corona en casa, qué leer cada domingo y un pequeño gesto para la semana. Para llegar a Navidad juntos.</p>
+    <a class="boton" href="#taller">Hacer el Adviento de mi familia</a>
+    <ul class="confianza"><li>Gratis, solo hasta Navidad</li><li>Listo en dos minutos</li><li>Los nombres no salen de tu celular</li></ul>
+  </div>
+  <figure class="heroe-obra">
+    <div class="marco"><canvas id="cvHeroe" width="1240" height="1754" aria-label="Ejemplo de un domingo de Adviento"></canvas></div>
+    <figcaption>Ejemplo · el primer domingo</figcaption>
+  </figure>
+</section>
+
+<section id="taller" class="taller">
+  <div class="taller-cab">
+    <p class="antetitulo">Tu Adviento</p>
+    <h2>Dos pasos y es tuyo</h2>
+  </div>
+
+  <div class="taller-cuerpo">
+    <aside class="previa">
+      <div class="previa-sticky">
+        <div class="marco pequeno"><canvas id="cvPag" width="1240" height="1754" aria-label="Vista previa"></canvas></div>
+        <div class="hojear"><button type="button" id="ant" aria-label="Página anterior">‹</button><span id="numPag">Portada</span><button type="button" id="sig" aria-label="Página siguiente">›</button></div>
+      </div>
+    </aside>
+
+    <form id="form" class="pasos" novalidate>
+      <article class="paso">
+        <span class="num">1</span>
+        <div>
+          <h3>¿Quiénes se sientan a tu mesa?</h3>
+          <p class="ayuda">Escribe los nombres de tu familia. Irán dentro de la oración de cada domingo. <strong>Estos nombres no salen de tu celular.</strong></p>
+          <div id="personas" class="personas"></div>
+          <button type="button" id="mas" class="boton claro mas">+ Otra persona</button>
+        </div>
+      </article>
+
+      <article class="paso">
+        <span class="num">2</span>
+        <div>
+          <h3>Tu nombre y tu WhatsApp</h3>
+          <input id="nombre" class="campo grande" autocomplete="given-name" maxlength="60" placeholder="Tu nombre" aria-label="Tu nombre">
+          <div class="tel"><select id="pais" class="campo prefijo" aria-label="Tu país"></select><input id="tel" class="campo grande" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="18" placeholder="Tu WhatsApp" aria-label="Tu número de WhatsApp"></div>
+          <input id="web" name="web" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="boton ancho enorme" type="submit">Recibir mi Adviento</button>
+          <p class="letra-peq">Al pulsar recibes tu Adviento y entras en la comunidad del Padre Samuel en WhatsApp, con oraciones y novedades. Sales cuando quieras escribiendo «BAJA». <a href="../privacidad/">Cómo cuidamos tus datos</a></p>
+          <p id="aviso" class="aviso" role="alert"></p>
+        </div>
+      </article>
     </form>
   </div>
-  <figure class="adv-foto"><img src="../fotos/capilla_virgen_retrato.jpg" alt="El Padre Samuel en una capilla" width="800" height="1000"></figure>
 </section>
-<section class="adv-semanas">
-  <h2>Cuatro semanas, cuatro velas</h2>
-  <div class="velas">
-    <article><span class="vela v1"></span><b>Semana 1 · Esperanza</b><p>Despertar: qué esperamos de verdad esta Navidad.</p></article>
-    <article><span class="vela v2"></span><b>Semana 2 · Paz</b><p>Preparar el camino: reconciliarnos en casa.</p></article>
-    <article><span class="vela v3"></span><b>Semana 3 · Alegría</b><p>Gaudete: la alegría que nadie nos puede quitar.</p></article>
-    <article><span class="vela v4"></span><b>Semana 4 · Amor</b><p>Con María, esperando al Niño.</p></article>
-  </div>
-  <p class="nota">Para hacerlo en familia: una corona de Adviento sencilla en la mesa, una vela más cada domingo, y la oración del día antes de cenar.</p>
+
+<section id="final" class="final" hidden>
+  <p class="antetitulo">Listo</p>
+  <h2>Tu Adviento ya está en tu celular, <span id="fNombre"></span></h2>
+  <p class="entrada">Ahora pulsa el botón verde y luego <b>«Seguir»</b>. En Nochebuena, los de la comunidad recibirán la bendición de la mesa de Navidad.</p>
+  <p><a class="boton verde enorme" id="finCanal" rel="noopener">💬 Entrar en la comunidad</a></p>
+  <p class="final-mini"><button type="button" id="bajaPDF" class="enlace">¿No se descargó? Descárgalo otra vez</button></p>
 </section>
+
+<section class="ritual">
+  <p class="antetitulo">Cómo vivirlo en casa</p>
+  <h2>Cuatro domingos, cuatro velas</h2>
+  <ol class="ritual-pasos">
+    <li><b>Hagan la corona antes del 29 de noviembre:</b> unas ramas verdes en círculo y cuatro velas, tres moradas y una rosa. Si no tienen, valen cuatro velas blancas.</li>
+    <li><b>Cada domingo, antes de comer o de cenar,</b> enciendan una vela más.</li>
+    <li><b>Lean juntos la página de ese domingo,</b> con los nombres de todos.</li>
+    <li><b>Durante la semana,</b> hagan el pequeño gesto que trae cada página.</li>
+  </ol>
+  <p class="nota">Primer domingo: 29 de noviembre · Segundo: 6 de diciembre · Tercero, el de la vela rosa: 13 de diciembre · Cuarto: 20 de diciembre.</p>
+</section>
+
 <div id="pie"></div>
-<script src="../config.js"></script><script src="../partes.js"></script>
-<script>
-document.getElementById("advForm").addEventListener("submit", async e => {
-  e.preventDefault(); const $ = id => document.getElementById(id), av = $("advAviso"), C = window.PS_CONFIG;
-  const n = $("advNombre").value.trim(), c = $("advCorreo").value.trim();
-  if (!n) { av.textContent = "Escribe tu nombre."; return; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c)) { av.textContent = "Revisa tu correo."; return; }
-  if (!$("advAcepto").checked) { av.textContent = "Marca la casilla para poder escribirte."; return; }
-  if (C.FORM_ENDPOINT) { try { await fetch(C.FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: new URLSearchParams({ EMAIL: c, FIRSTNAME: n, PROGRAMA: "adviento-2026" }) }); } catch (x) {} }
-  e.target.innerHTML = `<p class="gracias">¡Gracias, ${n.split(" ")[0].replace(/[<>&]/g, "")}! El 29 de noviembre recibirás la primera oración de Adviento.</p>`;
-});
-</script>
-</body></html>
+
+<script src="../config.js"></script>
+<script src="../partes.js"></script>
+<script src="../vendor/jspdf.umd.min.js"></script>
+<script src="adviento.js"></script>
+</body>
+</html>
