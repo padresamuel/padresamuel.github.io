@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rezo por ti · El libro de oración de tu familia · Oraciones del Padre Samuel</title>
+<meta name="description" content="Escribe los nombres de los tuyos y lo que necesita cada uno. Recibe gratis un libro de oración con una página para cada persona, en letra grande, para rezar cada día.">
+<meta property="og:title" content="Rezo por ti — el libro de oración de tu familia">
+<meta property="og:description" content="Una página para cada persona que quieres, con su nombre y una oración para lo que está viviendo. Gratis.">
+<meta property="og:image" content="../fotos/retrato_patio_ancha.jpg">
+<meta name="theme-color" content="#3d0c16">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilos.css">
+</head>
+<body data-raiz="../" data-seccion="rezo">
+
+<div id="cabecera"></div>
+
+<section class="heroe">
+  <div class="heroe-txt">
+    <p class="antetitulo">El regalo del Padre Samuel</p>
+    <h1>Rezo <em>por ti</em>.</h1>
+    <p class="entrada">El libro de oración de tu familia: una página para cada persona que quieres, con su nombre y una oración para lo que está viviendo ahora. En letra grande, para rezarlo cada día.</p>
+    <a class="boton" href="#taller">Hacer el libro de mi familia</a>
+    <ul class="confianza"><li>Gratis, siempre</li><li>Listo en dos minutos</li><li>Los nombres no salen de tu celular</li></ul>
+  </div>
+  <figure class="heroe-obra">
+    <div class="marco"><canvas id="cvHeroe" width="1240" height="1754" aria-label="Ejemplo de página del libro"></canvas></div>
+    <figcaption>Ejemplo · una página del libro</figcaption>
+  </figure>
+</section>
+
+<section id="taller" class="taller">
+  <div class="taller-cab">
+    <p class="antetitulo">Tu libro</p>
+    <h2>Tres pasos y es tuyo</h2>
+  </div>
+
+  <div class="taller-cuerpo">
+    <aside class="previa">
+      <div class="previa-sticky">
+        <div class="marco pequeno"><canvas id="cvPag" width="1240" height="1754" aria-label="Vista previa de la página"></canvas></div>
+        <div class="hojear"><button type="button" id="ant" aria-label="Página anterior">‹</button><span id="numPag">Portada</span><button type="button" id="sig" aria-label="Página siguiente">›</button></div>
+        <p class="nota-previa">Se escribe en tu propio celular, al momento.</p>
+      </div>
+    </aside>
+
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">I</span>
+        <div>
+          <h3><label for="apellido">El apellido de tu familia</label></h3>
+          <p class="ayuda">Irá en la portada: «El libro de oración de la familia…».</p>
+          <input id="apellido" class="campo grande" maxlength="28" autocomplete="family-name" placeholder="Hernández, García López…">
+        </div>
+      </article>
+
+      <article class="paso">
+        <span class="num">II</span>
+        <div>
+          <h3>¿Por quién quieres rezar?</h3>
+          <p class="ayuda">Escribe el nombre de cada persona y elige lo que está viviendo. Cada una tendrá su propia página. <strong>Estos nombres no salen de tu celular.</strong></p>
+          <div id="personas" class="personas"></div>
+          <button type="button" id="mas" class="boton claro mas">+ Añadir otra persona</button>
+        </div>
+      </article>
+
+      <article class="paso">
+        <span class="num">III</span>
+        <form id="form" class="form" novalidate>
+          <h3>¿A quién se lo entregamos?</h3>
+          <p class="ayuda">Déjanos tu WhatsApp y te avisamos cuando haya libros nuevos y oraciones especiales. Sin cadenas ni mensajes cada día.</p>
+          <div class="fila">
+            <div><label class="mini" for="nombre">Tu nombre</label><input id="nombre" class="campo" autocomplete="given-name" maxlength="60" placeholder="Tu nombre"></div>
+            <div><label class="mini" for="pais">Tu país</label><select id="pais" class="campo"></select></div>
+          </div>
+          <label class="mini" for="tel">Tu WhatsApp</label>
+          <div class="tel"><span id="prefijo">+52</span><input id="tel" class="campo" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="18" placeholder="Tu número"></div>
+          <input id="web" name="web" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="consent"><input id="acepto" type="checkbox"> <span>Quiero recibir mi libro y las oraciones del Padre Samuel por WhatsApp. Puedo darme de baja cuando quiera escribiendo «BAJA». <a href="../privacidad/">Cómo cuidamos tus datos</a></span></label>
+          <label class="consent"><input id="avisos" type="checkbox"> <span>También quiero enterarme de libros nuevos, novenas y novedades del Padre Samuel <span class="opcional">opcional</span></span></label>
+          <button class="boton ancho" type="submit">Recibir mi libro</button>
+          <p id="aviso" class="aviso" role="alert"></p>
+        </form>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="final" class="final" hidden>
+  <p class="antetitulo">Listo</p>
+  <h2>Tu libro ya está hecho, <span id="fNombre"></span></h2>
+  <p class="entrada">Guárdalo en tu celular o imprímelo. Y si quieres, mándale a cada persona su estampa: «Hoy recé por ti».</p>
+  <div class="descargas dos">
+    <button class="tarjeta-d" id="bajaPDF"><span class="ico">📖</span><b>Descargar mi libro</b><small>PDF en letra grande, una página por persona, para rezar o imprimir</small></button>
+    <a class="tarjeta-d" id="bajaWA" hidden rel="noopener"><span class="ico">💬</span><b>Recibirlo también por WhatsApp</b><small>Escríbele al Padre Samuel y guárdalo en tu chat</small></a>
+  </div>
+  <h3 class="estampas-tit">Una estampa para cada uno</h3>
+  <div id="estampasWA" class="estampas-wa"></div>
+  <p class="final-com"><a class="boton" id="finCanal" rel="noopener">💬 Únete a la comunidad en WhatsApp</a></p>
+</section>
+
+<section class="ritual">
+  <p class="antetitulo">Cómo rezar con tu libro</p>
+  <h2>Una página, un nombre, cada día</h2>
+  <ol class="ritual-pasos">
+    <li><b>Elige un momento fijo.</b> Al despertar, con el café o antes de dormir. Cinco minutos bastan.</li>
+    <li><b>Reza una página al día.</b> Si son siete personas, el libro te dura la semana entera, y vuelves a empezar.</li>
+    <li><b>Lee despacio y en voz alta.</b> Al decir el nombre, piensa en su cara.</li>
+    <li><b>Termina con un Padrenuestro</b> por esa persona.</li>
+    <li><b>Si puedes, díselo.</b> Un mensaje de «hoy recé por ti» cambia el día de cualquiera.</li>
+  </ol>
+  <p class="nota">Cuando la vida de alguien cambie, vuelve aquí y haz el libro de nuevo: es gratis y tarda dos minutos.</p>
+</section>
+
+<section class="preguntas">
+  <h2>Preguntas</h2>
+  <details><summary>¿Es gratis de verdad?</summary><p>Sí. El libro es gratis y lo seguirá siendo. No pedimos tarjeta ni hay nada que pagar después.</p></details>
+  <details><summary>¿Qué hacen con los nombres de mi familia?</summary><p>Nada, porque no nos llegan: el libro se escribe en tu propio celular. Los nombres y lo que vive cada persona no se envían ni se guardan en ningún sitio.</p></details>
+  <details><summary>¿Y con mi WhatsApp?</summary><p>Solo lo usamos para mandarte oraciones y, si marcaste la segunda casilla, avisos de libros y novenas. Nunca lo vendemos ni lo compartimos, y no te escribimos todos los días. Para darte de baja, escribe «BAJA» y te borramos.</p></details>
+  <details><summary>¿Puedo hacer otro libro para otra familia?</summary><p>Claro. Haz tantos como quieras y regálaselos.</p></details>
+  <details><summary>¿Lo puedo imprimir?</summary><p>Sí. Está en tamaño A4: llévalo a cualquier centro de copiado y queda muy bien encuadernado con un espiral sencillo.</p></details>
+</section>
+
+<div id="pie"></div>
+
+<script src="../config.js"></script>
+<script src="../partes.js"></script>
+<script src="../vendor/jspdf.umd.min.js"></script>
+<script src="rezo.js"></script>
+</body>
+</html>

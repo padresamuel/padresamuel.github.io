@@ -255,3 +255,22 @@ details p{color:var(--suave);margin:.6rem 0 0}
 .menu .menu-wa{background:#1f8f4e;color:#fff !important;border-radius:999px;padding:.35rem .9rem}
 .pie .pie-wa{background:#1f8f4e;color:#fff !important;display:inline-block}
 @media (max-width:640px){.wa-fija{left:12px;right:12px;bottom:12px;justify-content:center;border-radius:14px}body.con-wa{padding-bottom:84px}}
+
+/* ---------- Rezo por ti ---------- */
+.personas{display:flex;flex-direction:column;gap:.6rem;margin-bottom:.8rem}
+.persona{display:grid;grid-template-columns:1fr 1fr auto;gap:.5rem;align-items:center}
+.persona .quita{all:unset;cursor:pointer;width:2.2rem;height:2.2rem;border-radius:50%;text-align:center;line-height:2.2rem;font-size:1.4rem;color:var(--granate);background:var(--marfil2)}
+.boton.mas{padding:.7rem 1.2rem;font-size:.98rem}
+.hojear{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-top:.7rem;font-size:.9rem;color:var(--suave)}
+.hojear button{all:unset;cursor:pointer;width:2.6rem;height:2.6rem;border-radius:50%;text-align:center;line-height:2.5rem;font-size:1.6rem;color:var(--vino);border:1.5px solid var(--oro);background:var(--blanco)}
+.tel{display:grid;grid-template-columns:auto 1fr;gap:.5rem;align-items:center}
+.tel span{font:700 1.05rem var(--sans);color:var(--vino);background:var(--marfil2);border-radius:14px;padding:.85rem .9rem}
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.descargas.dos{display:flex;flex-wrap:wrap;justify-content:center;max-width:760px}
+.descargas.dos .tarjeta-d{flex:1 1 300px;max-width:360px}
+.descargas.dos a.tarjeta-d{text-decoration:none}
+.estampas-tit{font-size:1.6rem;color:var(--oro2);margin:2.4rem 0 1rem}
+.estampas-wa{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;max-width:900px;margin:0 auto}
+.final-com{margin-top:2.2rem}
+@media (max-width:640px){.persona{grid-template-columns:1fr auto}.persona select{grid-column:1/2}.persona .quita{grid-row:1/3;grid-column:2}.descargas.dos{grid-template-columns:1fr}}
+@media (max-width:640px){.previa .marco.pequeno{max-width:230px;margin:0 auto}.hojear{max-width:300px;margin:.7rem auto 0}}

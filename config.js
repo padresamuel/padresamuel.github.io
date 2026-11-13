@@ -3,6 +3,10 @@ window.PS_CONFIG = {
   // Al crear la cuenta de correo (Brevo / MailerLite / Kit), aquí va la URL del formulario de alta.
   // Vacío = MODO LOCAL: no se guarda ni se envía nada, la descarga se da directamente.
   FORM_ENDPOINT: "",
+  // Receptor propio (Google Apps Script en la cuenta del proyecto): guarda nombre, WhatsApp, país y consentimiento en una hoja PRIVADA.
+  COMUNIDAD_ENDPOINT: "https://script.google.com/macros/s/AKfycbzklIGgCmCXzkacSfwlZ5_2oP31xLctq9tVhXZy2nz1wiyj_BgoitP4Py76jppkZu8L3Q/exec",
+  // Número de WhatsApp Business del Padre Samuel, solo dígitos con prefijo (ej. "34600111222"). Vacío = botón oculto.
+  WA_NEGOCIO: "",
   CANAL_YOUTUBE: "https://www.youtube.com/@PadreSamueloraciones",
   CANAL_WHATSAPP: "",   // enlace del canal de WhatsApp cuando exista
   // Todos los canales donde aparece el Padre Samuel.
