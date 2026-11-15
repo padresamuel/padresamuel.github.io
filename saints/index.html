@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Family's Saint Days 2027 · Father Samuel</title>
+<meta name="description" content="A free gift from Father Samuel: type your family's first names and get a printable 2027 calendar with every saint day in your family.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--esp:#3b2416;--crema:#f7efe3;--gold:#b8892e;--ink:#2a1d14;--muted:#6b5a48;--line:#e3d3b8;--red:#8a1c1c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--crema);color:var(--ink);font:400 20px/1.55 "Source Sans 3",system-ui,sans-serif}
+header{background:var(--esp);color:#f3e2c0;text-align:center;padding:26px 16px 22px;border-bottom:4px solid var(--gold)}
+header p{margin:0;letter-spacing:.16em;text-transform:uppercase;font-size:14px;color:#e2c27a}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;line-height:1.15}
+header h1{margin:8px 0 0;font-size:clamp(34px,6.5vw,54px)}
+main{max-width:820px;margin:0 auto;padding:22px 16px 48px}
+h2{font-size:32px;margin:30px 0 8px;color:var(--esp)}
+label{display:block;font-weight:600;margin:14px 0 6px}
+input[type=text],input[type=email]{width:100%;font:inherit;font-size:22px;padding:14px 16px;border:2px solid var(--line);border-radius:10px;background:#fff}
+input:focus{outline:3px solid var(--gold);border-color:var(--gold)}
+.nombres{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.nombres{grid-template-columns:1fr}}
+.btn{display:inline-block;padding:16px 26px;border-radius:10px;background:var(--esp);color:#fff;text-decoration:none;font:600 21px "Source Sans 3",sans-serif;border:0;cursor:pointer}
+.btn.alt{background:#fff;color:var(--esp);border:2px solid var(--esp)}
+.btn.big{width:100%;margin-top:20px;font-size:23px;padding:18px}
+.link{background:none;border:0;color:var(--esp);text-decoration:underline;font:inherit;cursor:pointer;padding:6px 0}
+.nota{color:var(--muted);font-size:17px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:18px 0}
+#cal{display:none}
+.hoja{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 20px;box-shadow:0 10px 30px rgba(59,36,22,.12)}
+.hoja .tit{text-align:center;margin:0}
+.hoja .tit small{display:block;font:600 14px "Source Sans 3";letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.hoja .tit span{display:block;font-family:"Cormorant Garamond",serif;font-size:clamp(30px,6vw,46px);color:var(--esp);font-weight:700}
+.lista{list-style:none;padding:0;margin:18px 0}
+.lista li{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.lista .f{font-weight:700;color:var(--esp)}
+.lista .n{font-size:22px;font-weight:700}
+.lista .s{color:var(--muted);font-size:18px}
+.lista select{font:inherit;font-size:17px;margin-top:4px;max-width:100%}
+@media(max-width:560px){.lista li{grid-template-columns:1fr;gap:2px}}
+.meses{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+@media(max-width:640px){.meses{grid-template-columns:repeat(2,1fr)}}
+.mes h3{margin:0 0 4px;font-size:21px;color:var(--esp);text-align:center}
+.mes table{width:100%;border-collapse:collapse;font-size:13px;text-align:center}
+.mes th{color:var(--muted);font-weight:600}
+.mes td{height:22px}
+.mes td.fam{background:var(--gold);color:#fff;border-radius:50%;font-weight:700}
+.mes td.fiesta{color:var(--red);font-weight:700;text-decoration:underline}
+.ley{font-size:15px;color:var(--muted);text-align:center;margin-top:12px}
+.ley b.g{background:var(--gold);color:#fff;border-radius:50%;padding:0 6px}
+.ley b.r{color:var(--red);text-decoration:underline}
+.fiestas{columns:2;font-size:16px;margin-top:14px;padding-left:20px}
+@media(max-width:560px){.fiestas{columns:1}}
+.bend{font-family:"Cormorant Garamond",serif;font-size:22px;text-align:center;font-style:italic;margin:18px 6px 0;color:var(--esp)}
+.caja{background:#fff;border:1px solid var(--line);border-left:6px solid var(--gold);border-radius:10px;padding:18px 20px;margin:26px 0}
+.ok{color:#25632d;font-weight:700}
+footer{font-size:15px;color:var(--muted);border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
+footer a{color:var(--esp)}
+.trampa{position:absolute;left:-5000px}
+@media print{header,.noprint,footer{display:none!important}body{background:#fff;font-size:12pt}main{padding:0;max-width:none}.hoja{border:0;box-shadow:none;padding:0}.lista li{padding:5px 0}.lista .n{font-size:14pt}.lista select{display:none}.meses{grid-template-columns:repeat(4,1fr);gap:8px}.mes td{height:16px}.mes td.fam,.ley b.g{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<header>
+  <p>A free gift from Father Samuel · A Catholic Coffee</p>
+  <h1>Your Family's Saint Days 2027</h1>
+</header>
+<main>
+  <section id="paso1" class="noprint">
+    <p>Every name in your family belongs to a saint, and every saint has a day. Type your family name and the first names of the people you love: children, grandchildren, your husband or wife, your parents. In a moment you will see your family's calendar for 2027, ready to print and put on the fridge.</p>
+    <form id="f" autocomplete="off">
+      <label for="ape">Your family name</label>
+      <input type="text" id="ape" maxlength="40" placeholder="e.g. Johnson" required>
+      <label>First names in your family</label>
+      <div class="nombres" id="nombres"></div>
+      <button type="button" class="link" id="mas">+ Add another name</button>
+      <button class="btn big" type="submit">Show my family's calendar</button>
+      <p class="nota">The names stay on this phone or computer. They are not sent anywhere.</p>
+    </form>
+  </section>
+
+  <section id="cal">
+    <div class="hoja">
+      <p class="tit"><small>Saint days 2027</small><span id="tfam">The Family</span></p>
+      <ul class="lista" id="lista"></ul>
+      <div class="meses" id="meses"></div>
+      <p class="ley"><b class="g">12</b> a saint day in your family &nbsp; · &nbsp; <b class="r">12</b> a great feast of the Church</p>
+      <ul class="fiestas" id="fiestas"></ul>
+      <p class="bend" id="bend"></p>
+    </div>
+
+    <div class="btns noprint">
+      <button class="btn" onclick="window.print()">Print or save as PDF</button>
+      <button class="btn alt" id="editar">Change the names</button>
+    </div>
+
+    <div class="caja noprint" id="correo">
+      <h2 style="margin-top:0">A note from Father Samuel before each saint day</h2>
+      <p>If you like, leave your email and the week before each of these days I will send you a short blessing to pray for that person. One email a month at most, starting in January 2027. Free, and you can stop it at any time by replying STOP.</p>
+      <form id="fc">
+        <input type="text" name="web" class="trampa" tabindex="-1" aria-hidden="true">
+        <label for="em">Your email</label>
+        <input type="email" id="em" required placeholder="name@example.com">
+        <button class="btn big" type="submit">Send me the blessings</button>
+        <p class="nota">We only keep your email, your family name and the dates. The first names stay on your device.</p>
+      </form>
+      <p id="gracias" class="ok" style="display:none">Thank you. The first blessing arrives the week before your family's first saint day of 2027.</p>
+    </div>
+
+    <p class="noprint">One more thing: write <b>Amen</b> and your family name in the comments of the video. In the next videos, Father Samuel will pray for some of those families by name.</p>
+  </section>
+
+  <footer>
+    <p>Saint days follow the General Roman Calendar, the calendar of the United States, or the Roman Martyrology. Many names have more than one saint: tap the saint's name to choose another. Names without a saint of their own are celebrated with All Saints on November 1, as the Church has always done.</p>
+    <p>Father Samuel is a fictional character presented with the help of AI on the YouTube channel <a href="https://www.youtube.com/@ACatholicCoffee">A Catholic Coffee</a>. This page is not affiliated with the Vatican. <a href="privacy.html">Privacy</a></p>
+  </footer>
+</main>
+<script src="santos.js"></script>
+<script>
+(function(){
+const ENDPOINT="https://script.google.com/macros/s/AKfycbzklIGgCmCXzkacSfwlZ5_2oP31xLctq9tVhXZy2nz1wiyj_BgoitP4Py76jppkZu8L3Q/exec";
+const EMAIL_ON=true;
+const AÑO=2027;
+const codigo=(new URLSearchParams(location.search).get("s")||"").replace(/[^\w-]/g,"").slice(0,20);
+const post=(o)=>{try{fetch(ENDPOINT,{method:"POST",mode:"no-cors",keepalive:true,body:new URLSearchParams(o)});}catch(e){}};
+// Contador propio: solo página, código del vídeo y día. Sin cookies ni datos personales.
+try{const k="v_saints"+codigo;if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,"1");post({tipo:"visita",pagina:"/saints/"+(codigo||"")});}}catch(e){}
+
+const FIESTAS=[["01-01","Mary, Mother of God"],["02-10","Ash Wednesday"],["03-19","St. Joseph"],["03-25","Holy Thursday"],["03-26","Good Friday"],["03-28","Easter Sunday"],["04-04","Divine Mercy Sunday"],["05-16","Pentecost"],["06-04","Sacred Heart of Jesus"],["08-15","Assumption of Mary"],["11-01","All Saints"],["11-02","All Souls"],["11-28","First Sunday of Advent"],["12-08","Immaculate Conception"],["12-12","Our Lady of Guadalupe"],["12-25","Christmas"]];
+const MESES=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const DIAS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const $=(id)=>document.getElementById(id);
+const esc=(s)=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cap=(s)=>s.trim().replace(/\s+/g," ").replace(/(^|[\s-])\p{L}/gu,m=>m.toUpperCase());
+
+function campo(v){const i=document.createElement("input");i.type="text";i.maxLength=30;i.placeholder="First name";i.value=v||"";$("nombres").appendChild(i);return i;}
+for(let i=0;i<6;i++)campo();
+$("mas").onclick=()=>{if($("nombres").children.length<16)campo().focus();};
+
+let gente=[];
+function fecha(md){const[m,d]=md.split("-").map(Number);return new Date(AÑO,m-1,d);}
+function largo(md){const f=fecha(md);return DIAS[f.getDay()]+", "+MESES[f.getMonth()].slice(0,3)+" "+f.getDate();}
+
+function pintar(){
+  const ape=cap($("ape").value);
+  $("tfam").textContent="The "+ape+" Family";
+  const orden=[...gente].sort((a,b)=>a.op[a.i][1].localeCompare(b.op[b.i][1]));
+  $("lista").innerHTML=orden.map(p=>{
+    const [s,md]=p.op[p.i];
+    const sel=p.op.length>1?'<select data-k="'+gente.indexOf(p)+'">'+p.op.map((o,j)=>'<option value="'+j+'"'+(j===p.i?" selected":"")+'>'+esc(o[0])+" · "+esc(largo(o[1]))+'</option>').join("")+'</select>':'<div class="s">'+esc(s)+(p.todos?" (with all the saints)":"")+'</div>';
+    return '<li><div class="f">'+esc(largo(md))+'</div><div><div class="n">'+esc(p.nombre)+'</div>'+sel+'</div></li>';
+  }).join("");
+  document.querySelectorAll(".lista select").forEach(el=>el.onchange=()=>{gente[+el.dataset.k].i=+el.value;pintar();});
+  const fam=new Set(gente.map(p=>p.op[p.i][1])), fie=new Set(FIESTAS.map(f=>f[0]));
+  let h="";
+  for(let m=0;m<12;m++){
+    const pri=new Date(AÑO,m,1).getDay(), n=new Date(AÑO,m+1,0).getDate();
+    let t="<tr>"+"SMTWTFS".split("").map(d=>"<th>"+d+"</th>").join("")+"</tr><tr>";
+    for(let i=0;i<pri;i++)t+="<td></td>";
+    for(let d=1;d<=n;d++){const md=String(m+1).padStart(2,"0")+"-"+String(d).padStart(2,"0");const c=fam.has(md)?"fam":(fie.has(md)?"fiesta":"");t+='<td class="'+c+'">'+d+"</td>";if((pri+d)%7===0&&d<n)t+="</tr><tr>";}
+    h+='<div class="mes"><h3>'+MESES[m]+"</h3><table>"+t+"</tr></table></div>";
+  }
+  $("meses").innerHTML=h;
+  $("fiestas").innerHTML=FIESTAS.map(f=>"<li><b>"+esc(largo(f[0]))+"</b> · "+esc(f[1])+"</li>").join("");
+  $("bend").textContent="May every saint in this calendar pray for the "+ape+" family, and may Our Lord keep each one of you close all year long. Amen.";
+}
+
+$("f").onsubmit=(e)=>{
+  e.preventDefault();
+  const noms=[...$("nombres").querySelectorAll("input")].map(i=>cap(i.value)).filter(Boolean);
+  if(!noms.length){$("nombres").querySelector("input").focus();return;}
+  gente=noms.map(n=>{const op=window.SANTOS.buscar(n.split(" ")[0]);return{nombre:n,op:op||window.SANTOS.TODOS,i:0,todos:!op};});
+  pintar();
+  $("paso1").style.display="none";$("cal").style.display="block";
+  if(!EMAIL_ON)$("correo").style.display="none";
+  window.scrollTo(0,0);
+  post({tipo:"visita",pagina:"/saints/hecho"});
+};
+$("editar").onclick=()=>{$("cal").style.display="none";$("paso1").style.display="block";window.scrollTo(0,0);};
+$("fc").onsubmit=(e)=>{
+  e.preventDefault();
+  if(e.target.web.value)return;
+  const fechas=[...new Set(gente.map(p=>p.op[p.i][1]+"|"+p.op[p.i][0]))].sort().join("; ");
+  post({tipo:"correo",email:$("em").value.trim(),apellido:cap($("ape").value),fechas:fechas,regalo:"Saint Days 2027",origen:codigo});
+  $("fc").style.display="none";$("gracias").style.display="block";
+};
+})();
+</script>
+</body>
+</html>
