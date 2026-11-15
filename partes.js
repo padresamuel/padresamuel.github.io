@@ -27,8 +27,29 @@
     a.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.3 19.4L3 29l6.8-1.8A13 13 0 1 0 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1 1.1-3.9-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg><span><b>Únete a la comunidad</b><small>Una oración cada mañana en WhatsApp</small></span>';
     document.body.appendChild(a); document.body.classList.add("con-wa");
   }
+  // Final de los regalos (15-11): si hay número de WhatsApp Business, la persona ESCRIBE PRIMERO al Padre Samuel
+  // (mensaje ya escrito) y la bienvenida automática de WhatsApp Business le responde. Nunca escribimos nosotros en frío.
+  window.PS_FIN = (regalo, nombre, volver) => {
+    const fc = document.getElementById("finCanal"), fin = document.getElementById("final");
+    const num = (C.WA_NEGOCIO || "").replace(/\D/g, "");
+    let dest = C.WHATSAPP || volver;
+    if (num && fc) {
+      const n = (nombre || "").trim().split(/\s+/)[0];
+      dest = "https://wa.me/" + num + "?text=" + encodeURIComponent("Amén 🙏 Soy " + n + ". Ya tengo " + regalo + ".");
+      fc.textContent = "💬 Escríbele al Padre Samuel";
+      const e = fin && fin.querySelector(".entrada");
+      if (e) e.innerHTML = "Último paso: pulsa el botón verde y <b>envía el mensaje</b> que ya está escrito. El Padre Samuel te contestará por WhatsApp y te dará la bienvenida a la comunidad.";
+      if (C.WHATSAPP && !document.getElementById("finCanal2")) {
+        const q = document.createElement("p"); q.className = "final-mini";
+        q.innerHTML = '<a id="finCanal2" class="enlace" href="' + C.WHATSAPP + '" rel="noopener">o entra directamente en el canal y pulsa «Seguir»</a>';
+        fc.parentNode.after(q);
+      }
+    }
+    if (fc) fc.href = dest;
+    return dest;
+  };
   // Contador de visitas propio (14/11): solo cuenta página y día en nuestra hoja. Sin cookies, sin IP, sin datos personales.
   const cuenta = (pagina) => { if (!C.COMUNIDAD_ENDPOINT) return; try { fetch(C.COMUNIDAD_ENDPOINT, { method: "POST", mode: "no-cors", keepalive: true, body: new URLSearchParams({ tipo: "visita", pagina }) }); } catch (e) {} };
   try { const k = "ps_v_" + location.pathname; if (!sessionStorage.getItem(k)) { sessionStorage.setItem(k, "1"); cuenta(location.pathname); } } catch (e) { cuenta(location.pathname); }
-  document.addEventListener("click", (e) => { const a = e.target.closest && e.target.closest('a[href*="whatsapp.com/channel"]'); if (a) cuenta("/clic-whatsapp"); }, true);
+  document.addEventListener("click", (e) => { const a = e.target.closest && e.target.closest('a[href*="whatsapp.com/channel"]'); if (a) cuenta("/clic-whatsapp"); const b = e.target.closest && e.target.closest('a[href*="wa.me/"]'); if (b) cuenta("/clic-escribir"); }, true);
 })();

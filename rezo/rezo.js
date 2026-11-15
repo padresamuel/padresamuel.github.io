@@ -143,10 +143,10 @@
     if (C.COMUNIDAD_ENDPOINT && !ya) { try { fetch(C.COMUNIDAD_ENDPOINT, { method: "POST", mode: "no-cors", body: datos, keepalive: true }); } catch (e) {} }
     try { pdf(); } catch (e) {}
     $("#fNombre").textContent = nombre.split(" ")[0];
-    const fc = $("#finCanal"); fc.href = C.WHATSAPP || "../";
+    const dest = window.PS_FIN ? PS_FIN("mi libro Rezo por ti", nombre, "../") : (C.WHATSAPP || "../"); $("#finCanal").href = dest;
     const fin = $("#final"); fin.hidden = false; fin.scrollIntoView({ behavior: "smooth" });
     // Directo a la comunidad (en iPhone abrir solo puede cortar la descarga: allí se queda el botón verde)
-    if (C.WHATSAPP && !/iPad|iPhone|iPod/.test(navigator.userAgent)) setTimeout(() => { location.href = C.WHATSAPP; }, 2500);
+    if (dest.startsWith("http") && !/iPad|iPhone|iPod/.test(navigator.userAgent)) setTimeout(() => { location.href = dest; }, 2500);
   }
   function paisPorDefecto() {
     let tz = ""; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
