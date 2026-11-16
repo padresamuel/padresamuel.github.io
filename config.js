@@ -6,7 +6,7 @@ window.PS_CONFIG = {
   // Receptor propio (Google Apps Script en la cuenta del proyecto): guarda nombre, WhatsApp, país y consentimiento en una hoja PRIVADA.
   COMUNIDAD_ENDPOINT: "https://script.google.com/macros/s/AKfycbzklIGgCmCXzkacSfwlZ5_2oP31xLctq9tVhXZy2nz1wiyj_BgoitP4Py76jppkZu8L3Q/exec",
   // Número de WhatsApp Business del Padre Samuel, solo dígitos con prefijo (ej. "34600111222"). Vacío = botón oculto.
-  WA_NEGOCIO: "34600940405",
+  WA_NEGOCIO: "",
   CANAL_YOUTUBE: "https://www.youtube.com/@PadreSamueloraciones",
   CANAL_WHATSAPP: "",   // enlace del canal de WhatsApp cuando exista
   // Todos los canales donde aparece el Padre Samuel.
